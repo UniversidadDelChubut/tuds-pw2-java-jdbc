@@ -75,7 +75,7 @@ public class Fichada implements Serializable {
         return "?";
     }
 
-    private static final String SQL_SELECT_TODAS = "SELECT * FROM fichadas.movimiento WHERE fecha_hora::date = ?";
+    private static final String SQL_SELECT_TODAS = "SELECT * FROM fichadas.movimiento WHERE fecha_hora::date = ? ORDER BY fecha_hora";
 
     public static List getListado(Connection conn, Date fecha) throws SQLException {
         List<Fichada> res = new ArrayList();
@@ -90,7 +90,7 @@ public class Fichada implements Serializable {
                 item.setId(rs.getInt("id"));
                 item.setEmpleadoId(rs.getInt("empleado_id"));
                 item.setTipoMovimiento(rs.getString("tipo_movimiento"));
-                item.setFechaHora(rs.getDate("fecha_hora"));
+                item.setFechaHora(rs.getTime("fecha_hora"));
 
                 Empleado emp = Empleado.getPorId(conn, item.empleadoId);
                 item.setEmpleado(emp);
