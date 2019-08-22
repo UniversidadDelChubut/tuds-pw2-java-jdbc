@@ -15,9 +15,21 @@
         </c:if>
 
         <c:if test="${not empty datos}">
-            <c:forEach items="${datos}" var="item">
-                <table><tr><th></th></tr></table>
-            </c:forEach>
+                <table border="1">
+                    <tr>
+                        <th>Hora</th>
+                        <th>Empleado</th>
+                        <th>Movimiento</th>
+                    </tr>
+                    <c:forEach items="${datos}" var="item">
+                        <tr>
+                            <td>${item.fechaHora}</td>
+                            <td>${item.empleado}</td>
+                            <td>${item.tipoMovimientoLetras}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            
         </c:if>
     </body>
 </html>

@@ -19,6 +19,7 @@ public class Fichada implements Serializable {
     private Integer empleadoId;
     private Date fechaHora;
     private String tipoMovimiento;
+    private Empleado empleado;
 
     public Fichada() {
     }
@@ -55,6 +56,25 @@ public class Fichada implements Serializable {
         this.tipoMovimiento = tipo_movimiento;
     }
 
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public String getTipoMovimientoLetras() {
+        switch (tipoMovimiento) {
+            case "E":
+                return "ENTRADA";
+            case "S":
+                return "SALIDA";
+        }
+        
+        return "?";
+    }
+
     private static final String SQL_SELECT_TODAS = "SELECT * FROM fichadas.movimiento WHERE fecha_hora::date = ?";
 
     public static List getListado(Connection conn, Date fecha) throws SQLException {
@@ -71,6 +91,9 @@ public class Fichada implements Serializable {
                 item.setEmpleadoId(rs.getInt("empleado_id"));
                 item.setTipoMovimiento(rs.getString("tipo_movimiento"));
                 item.setFechaHora(rs.getDate("fecha_hora"));
+
+                Empleado emp = Empleado.getPorId(conn, item.empleadoId);
+                item.setEmpleado(emp);
 
                 res.add(item);
             } while (rs.next());

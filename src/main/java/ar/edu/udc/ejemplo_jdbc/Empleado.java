@@ -74,4 +74,11 @@ public class Empleado implements Serializable {
         return res;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s %s", apellido, nombre);
+    }
+    
+    
+
 }
