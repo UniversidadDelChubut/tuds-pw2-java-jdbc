@@ -8,11 +8,10 @@
                   url="jdbc:postgresql://localhost:5432/postgres" 
                   username="postgres"
                   password="docker"
-                  maxActive="2" 
+                  maxTotal="10" 
                   maxIdle="1" 
-                  maxWait="-1" 
                   accessToUnderlyingConnectionAllowed="true"
-                  removeAbandoned="true"
+                  removeAbandonedOnBorrow="true"
                   removeAbandonedTimeout="60"
                   logAbandoned="false"  
 />
