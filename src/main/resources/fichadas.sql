@@ -31,7 +31,7 @@ create table fichadas.movimiento (
 
 insert into fichadas.movimiento(empleado_id, tipo_movimiento, fecha_hora)
 values
-(1, 'E', now() - interval '3 hour'),
+(1, 'E', now() - interval '6 hour'),
 (1, 'S', now() - interval '3 hour'),
 (2, 'E', now() - interval '2 hour')
 ;
