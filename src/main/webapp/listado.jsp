@@ -23,7 +23,7 @@
                     </tr>
                     <c:forEach items="${datos}" var="item">
                         <tr>
-                            <td><fmt:formatDate pattern="H:m" value="${item.fechaHora}"/></td>
+                            <td><fmt:formatDate pattern="HH:mm:ss" value="${item.fechaHora}"/></td>
                             <td>${item.empleado}</td>
                             <td>${item.tipoMovimientoLetras}</td>
                         </tr>
